@@ -10,7 +10,7 @@ struct link {
 
 class Link_list {
 private:
-    link *head;
+    link *head;//
 public:
     Link_list () : head(nullptr) {}
 
