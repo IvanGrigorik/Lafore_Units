@@ -3,47 +3,53 @@
 
 using namespace std;
 
-struct link {
+struct node {
     int data;
-    link *next;
+    node *next;
 };
 
 class Link_list {
 private:
-    link *head;//
+    node *head;
 public:
     Link_list () : head(nullptr) {}
 
-    friend ostream &operator<< (ostream &out, Link_list out_link_list) {
-        link *current = out_link_list.head;
-        while (current) {
-            out << current->data << endl;
-            current = current->next;
-        }
-
-        return out;
-    }
-
-    void add_item () {
-        int new_data;
-        cout << "Enter new data: ";
-        cin >> new_data;
-        link *new_link = new link;
+    void add_item (int new_data) {
+        node *new_link = new node;
         new_link->data = new_data;
         new_link->next = head;
         head = new_link;
     }
 
+    void file_write () {
+        ofstream out("test.txt", ios::app | ios::trunc);
+        node *current = head;
+        while (current) {
+            out << current->data << endl;
+            current = current->next;
+        }
+        out.close();
+    }
+
+    void file_read () {
+        ifstream in("test.txt");
+
+        int data;
+        while (true) {
+            in >> data;
+            if (in.eof())
+                break;
+            add_item(data);
+        }
+        add_item(data);
+    }
+
     void display () {
-        link *current = head;
+        node *current = head;
         while (current) {
             cout << current->data << endl;
             current = current->next;
         }
-    }
-
-    void file_write () {
-
     }
 };
 
@@ -53,7 +59,7 @@ int menu () {
          << "1) To add link in the list" << endl
          << "2) To show all link's data" << endl
          << "3) To add link's to file" << endl
-         << "4) To get new link list from file" << endl
+         << "4) To get add new link from file" << endl
          << ">> ";
     cin >> x;
     return x;
@@ -62,25 +68,34 @@ int menu () {
 int main () {
     Link_list new_linklist;
 
-    new_linklist.add_item();
-    new_linklist.add_item();
-    new_linklist.add_item();
+    int data;
 
-    cout << new_linklist;
+    while (true) {
+        switch (menu()) {
+            case 1: {
+                cout << "Input data: ";
+                cin >> data;
+                new_linklist.add_item(data);
+                break;
+            }
 
+            case 2: {
+                new_linklist.display();
+                break;
+            }
 
-//    while (true) {
-//        switch (menu()) {
-//            case 1: {
-//                new_linklist.add_item();
-//            }
-//
-//            case 2: {
-//                new_linklist.display();
-//            }
-//
-//            default:
-//                return 0;
-//        }
-//    }
+            case 3: {
+                new_linklist.file_write();
+                break;
+            }
+
+            case 4: {
+                new_linklist.file_read();
+                break;
+            }
+
+            default:
+                return 0;
+        }
+    }
 }

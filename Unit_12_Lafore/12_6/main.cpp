@@ -10,7 +10,7 @@ private:
     int number;
 
 public:
-    Employee () : name(), patronymic(), number() {};
+    Employee () : name(), patronymic(), number() {};w
 
     friend istream &operator>> (istream &in, Employee &data) {
         in >> data.name >> data.patronymic >> data.number;
