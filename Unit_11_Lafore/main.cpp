@@ -1,7 +1,5 @@
 #include <iostream>
 #include <math.h>
-#include "windows.h"
-#include "../../KPIYAP/BSUiR_labs_Ivan/Lab3_int_array_overload/Array.h"
 
 using namespace std;
 
@@ -275,7 +273,7 @@ bMoney operator / (long double m1, bMoney m2)
 }
 bMoney round (bMoney money_to_round)
 {
-    long double round_money, whole_part, div_part;
+    long double whole_part, div_part;
     div_part = modf( money_to_round.money , &whole_part);
     return ( (div_part >= 0.5) ? bMoney(++whole_part) : bMoney(whole_part));
 }

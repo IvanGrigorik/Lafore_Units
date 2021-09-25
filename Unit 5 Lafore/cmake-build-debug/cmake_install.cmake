@@ -1,4 +1,4 @@
-# Install script for directory: D:/C++ projects/Unit 5 Lafore
+# Install script for directory: D:/projects/Lafore_Units/Unit 5 Lafore
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/C++ projects/Unit 5 Lafore/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/projects/Lafore_Units/Unit 5 Lafore/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -3,99 +3,74 @@
 
 using namespace std;
 
-struct node {
-    int data;
-    node *next;
-};
-
-class Link_list {
+class Employee {
 private:
-    node *head;
+    string name{};
+    string last_name{};
+    string patronymic{};
+    int number{};
+    static fstream file;
+
 public:
-    Link_list () : head(nullptr) {}
 
-    void add_item (int new_data) {
-        node *new_link = new node;
-        new_link->data = new_data;
-        new_link->next = head;
-        head = new_link;
+    Employee () : name(), last_name(), patronymic(), number() {};
+
+    static void open_file () {
+        file.open("test.txt", ios::in | ios::out | ios::app);
     }
 
-    void file_write () {
-        ofstream out("test.txt", ios::app | ios::trunc);
-        node *current = head;
-        while (current) {
-            out << current->data << endl;
-            current = current->next;
-        }
-        out.close();
+    static void dump_file () {
+        file.seekg(0);
     }
 
-    void file_read () {
-        ifstream in("test.txt");
-
-        int data;
-        while (true) {
-            in >> data;
-            if (in.eof())
-                break;
-            add_item(data);
-        }
-        add_item(data);
+    static void close_file () {
+        file.close();
     }
 
-    void display () {
-        node *current = head;
-        while (current) {
-            cout << current->data << endl;
-            current = current->next;
-        }
+    friend istream &operator>> (istream &in, Employee &data) {
+        in >> data.name >> data.last_name >> data.patronymic >> data.number;
+        return in;
+    }
+
+    friend ostream &operator<< (ostream &out, Employee &data) {
+        out << data.name << " " << data.last_name << " " << data.patronymic << " " << data.number << endl;
+        return out;
+    }
+
+    void write_file () {
+        file << *this;
+    }
+
+    void read_file (int number_to_search) {
+        dump_file();
+        for (int i = 0; i < number_to_search; i++)
+            file >> *this;
     }
 };
 
-int menu () {
-    int x;
-    cout << "Enter: " << endl
-         << "1) To add link in the list" << endl
-         << "2) To show all link's data" << endl
-         << "3) To add link's to file" << endl
-         << "4) To get add new link from file" << endl
-         << ">> ";
-    cin >> x;
-    return x;
-}
+fstream Employee::file;
 
 int main () {
-    Link_list new_linklist;
+    Employee emp;
+    Employee::open_file();
 
-    int data;
-
+    char dummy_char = 'y';
     while (true) {
-        switch (menu()) {
-            case 1: {
-                cout << "Input data: ";
-                cin >> data;
-                new_linklist.add_item(data);
-                break;
-            }
+        cout << "Enter name, last name, patronymic and number: ";
+        cin >> emp;
+        emp.write_file();
 
-            case 2: {
-                new_linklist.display();
-                break;
-            }
-
-            case 3: {
-                new_linklist.file_write();
-                break;
-            }
-
-            case 4: {
-                new_linklist.file_read();
-                break;
-            }
-
-            default:
-                return 0;
-        }
+        cout << "Continue? (y/n): ";
+        cin >> dummy_char;
+        if (dummy_char != 'y')
+            break;
     }
+
+    int num = 0;
+    cout << "Enter number to find: ";
+    cin >> num;
+    emp.read_file(num);
+    cout << emp;
+
+    Employee::close_file();
 }

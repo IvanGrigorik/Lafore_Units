@@ -55,6 +55,6 @@ int main(){
     int num = 0;
     cout << "Enter number to find: ";
     cin >> num;
-    emp.read_file(num);
+        emp.read_file(num);
     cout << emp;
 }
