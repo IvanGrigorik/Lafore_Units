@@ -11,18 +11,18 @@ int main () {
 }
 
 
-class bMoney {
+class Money {
 private:
     long double money;
 public:
     // Constructors
-    bMoney () : money() {};
+    Money () : money() {};
 
-    explicit bMoney (long double new_bill) : money(new_bill) {};
+    explicit Money (long double new_bill) : money(new_bill) {};
 
-    explicit bMoney (const string &str_money) : money(stoi(str_money)) {};
+    explicit Money (const string &str_money) : money(stoi(str_money)) {};
 
-    void money_add (bMoney m1, bMoney m2) { money = m1.money + m2.money; }
+    void money_add (Money m1, Money m2) { money = m1.money + m2.money; }
 
     void get_money () {
         cout << "Enter bill: ";
@@ -31,66 +31,79 @@ public:
 
     void put_money () const { cout << "Bill: " << money << endl; }
 
-    friend bMoney round (bMoney money_to_round);
+    friend Money round (Money money_to_round);
 
-    friend bMoney operator+ (bMoney, bMoney);
+    friend Money operator+ (Money, Money);
 
-    friend bMoney operator- (bMoney, bMoney);
+    friend Money operator- (Money, Money);
 
-    bMoney operator* (bMoney m1) const {
+    Money operator* (Money m1) const {
         long double money_mul = money * m1.money;
-        return bMoney(money_mul);
+        return Money(money_mul);
     }
 
-    long double operator/ (bMoney m1) const {
+    long double operator/ (Money m1) const {
         long double money_div = money / m1.money;
         return money_div;
     }
 
-    friend bMoney operator/ (bMoney, long double);
+    friend Money operator/ (Money, long double);
 
-    friend bMoney operator* (long double, bMoney);
+    friend Money operator* (long double, Money);
 
-    friend bMoney operator/ (long double, bMoney);
+    friend Money operator/ (long double, Money);
+
+    friend ostream &operator<< (ostream &out, Money data) {
+        out << "Bill: " << data.money << endl;
+        return out;
+    }
+
+    friend istream &operator>> (istream &in, Money &data) {
+        in >> data.money;
+        return in;
+    }
 };
 
-bMoney operator+ (bMoney m1, bMoney m2) {
+Money operator+ (Money m1, Money m2) {
     long double money_sum = m1.money + m2.money;
-    return bMoney{money_sum};
+    return Money{money_sum};
 }
 
-bMoney operator- (bMoney m1, bMoney m2) {
+Money operator- (Money m1, Money m2) {
     long double money_dif = m1.money - m2.money;
-    return bMoney{money_dif};
+    return Money{money_dif};
 }
 
-bMoney operator/ (bMoney m1, long double prod_num) {
-    bMoney money_div;
+Money operator/ (Money m1, long double prod_num) {
+    Money money_div;
     money_div.money = m1.money / prod_num;
-    return bMoney{money_div};
+    return Money{money_div};
 }
 
-bMoney operator* (long double m1, bMoney m2) {
-    bMoney money_mul;
+Money operator* (long double m1, Money m2) {
+    Money money_mul;
     money_mul.money = m1 * m2.money;
     return money_mul;
 }
 
-bMoney operator/ (long double m1, bMoney m2) {
-    bMoney money_div;
+Money operator/ (long double m1, Money m2) {
+    Money money_div;
     money_div.money = m1 / m2.money;
     return money_div;
 }
 
-bMoney round (bMoney money_to_round) {
+Money round (Money money_to_round) {
     long double whole_part, div_part;
     div_part = modf(money_to_round.money, &whole_part);
-    return ((div_part >= 0.5) ? bMoney(++whole_part) : bMoney(whole_part));
+    return ((div_part >= 0.5) ? Money(++whole_part) : Money(whole_part));
 }
 
 void bills_busy () {
-    bMoney m1("123"), m2(123.32), m3, m4;
-    m3.get_money();
+    Money m1("123"), m2(123.32), m3, m4;
+    cout << "Enter bill data: ";
+    cin >> m3;
+    cout << m3;
+    system("pause > 0");
 
     m4 = m1 + m2;
     m4.put_money();
