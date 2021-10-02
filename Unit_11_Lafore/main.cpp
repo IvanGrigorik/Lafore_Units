@@ -10,9 +10,9 @@ void bills_busy();
 
 int main()
 {
-//    library();
-//    english_calculator();
-//    array_madness();
+    library();
+    english_calculator();
+    array_madness();
     bills_busy();
 }
 
