@@ -77,19 +77,19 @@ int main () {
     char choice;
 
     try {
-
-        do{
+        do {
             d.get_dist();
             cout << endl;
             d.show_dist();
             cout << "Enter another? (y/n): ";
             cin >> choice;
-        }while(choice == 'y');
+        } while (choice == 'y');
     }
     catch (Distance::Ex_inches) {
         cout << "Invalid inches input";
     }
     catch (Distance::Ex_feet) {
         cout << "Invalid feet input";
+        cin.ignore(1000, '\n');
     }
 }

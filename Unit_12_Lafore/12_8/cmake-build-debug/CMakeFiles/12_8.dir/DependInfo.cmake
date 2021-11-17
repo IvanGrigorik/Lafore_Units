@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/projects/Lafore_Units/Unit_12_Lafore/12_7/main.cpp" "D:/projects/Lafore_Units/Unit_12_Lafore/12_7/cmake-build-debug/CMakeFiles/12_7.dir/main.cpp.obj"
+  "D:/projects/Lafore_Units/Unit_12_Lafore/12_8/main.cpp" "D:/projects/Lafore_Units/Unit_12_Lafore/12_8/cmake-build-debug/CMakeFiles/12_8.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
