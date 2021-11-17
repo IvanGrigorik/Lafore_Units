@@ -28,6 +28,7 @@ void multiply() {
     int x;
     cout << "Enter number: ";
     cin >> x;
+    //
 
     for (int i = 1; i < 200; i++) {
         cout << i * x;
