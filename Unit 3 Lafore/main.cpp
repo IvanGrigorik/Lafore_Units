@@ -11,11 +11,11 @@ void factorial();
 
 int main()
 {
-//    multiply();
-//    celsius();
-//    char_to_int();
-//    f_calculator();
-//    pyramid();
+    multiply();
+    celsius();
+    char_to_int();
+    f_calculator();
+    pyramid();
 factorial();
 }
 
