@@ -31,10 +31,10 @@
 *.out
 *.app
 
-# Clion files
-cmake-build-debug/
-cmake-build-release/
-# In .idea folder
-workspace.xml
-usage.statistics.xml
-/shelf/
+# Ignore any folder
+*.idea/
+*cmake-build-debug/
+*cmake-build-release/
+# Except labs and src folders
+*.out
+*.log

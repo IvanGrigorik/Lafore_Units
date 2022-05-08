@@ -1,3 +1,0 @@
-D:/C++ projects/Unit 6 Lafore/cmake-build-debug/CMakeFiles/Unit_6_Lafore.dir
-D:/C++ projects/Unit 6 Lafore/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/C++ projects/Unit 6 Lafore/cmake-build-debug/CMakeFiles/rebuild_cache.dir
