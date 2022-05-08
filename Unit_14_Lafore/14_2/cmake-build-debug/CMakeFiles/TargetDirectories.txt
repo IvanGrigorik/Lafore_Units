@@ -1,3 +1,0 @@
-D:/projects/Lafore_Units/Unit_14_Lafore/14_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-D:/projects/Lafore_Units/Unit_14_Lafore/14_2/cmake-build-debug/CMakeFiles/14_2.dir
-D:/projects/Lafore_Units/Unit_14_Lafore/14_2/cmake-build-debug/CMakeFiles/edit_cache.dir
